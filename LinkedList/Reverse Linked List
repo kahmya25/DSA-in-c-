@@ -1,0 +1,21 @@
+struct ListNode* reverseList(struct ListNode* head) {
+    struct ListNode* temp1,*temp2;
+    temp1=head;
+    int i,j,count=1,temp;
+    while(temp1!=0 && temp1->next!=0 ){
+     temp1=temp1->next;
+     count++;
+    }
+    temp1=head;
+    for(i=0;i<count/2;i++){
+        temp2=head;
+      for(j=0;j<count-i-1;j++){
+        temp2=temp2->next;
+      }
+       temp=temp1->val;
+       temp1->val=temp2->val;
+       temp2->val=temp;
+       temp1=temp1->next;
+    }
+    return head;
+}
