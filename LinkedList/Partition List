@@ -1,0 +1,41 @@
+struct ListNode* partition(struct ListNode* head, int x) {
+    struct ListNode* temp1=head;
+    if(head==NULL) return NULL;
+    struct ListNode* temp2=NULL;
+    struct ListNode* head1=NULL;
+    while(temp1!=0){
+        if(temp1->val<x){
+            struct ListNode* newnode;
+            newnode=(struct ListNode*)malloc(sizeof(struct ListNode));
+            newnode->val=temp1->val;
+            if(temp2==NULL){
+                head1=newnode;
+                temp2=newnode;
+            }
+            else{
+                temp2->next=newnode;
+                temp2=newnode;
+            }
+        }
+        temp1=temp1->next;
+    }
+    temp1=head;
+    while(temp1!=0){
+        if(temp1->val>=x){
+        struct ListNode* newnode;
+        newnode=(struct ListNode*)malloc(sizeof(struct ListNode));
+                newnode->val=temp1->val;
+                if(temp2==NULL){
+                head1=newnode;
+                temp2=newnode;
+            }
+            else{
+                temp2->next=newnode;
+                temp2=newnode;
+            }
+        }
+        temp1=temp1->next;
+    }
+    temp2->next=NULL;
+    return head1;
+}
